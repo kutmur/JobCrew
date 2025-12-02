@@ -1,4 +1,7 @@
-# tools/search_tools.py
+"""
+JobCrew Search Tools
+Tools for searching job listings using Serper API.
+"""
 
 import os
 from dotenv import load_dotenv
