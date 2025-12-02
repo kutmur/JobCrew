@@ -48,6 +48,9 @@ Thumbs.db
 # Generated reports
 jobs_report.md
 
+# Test scripts
+test_structure.py
+
 # Old structure (deprecated)
 /agents.py
 /tasks.py
