@@ -50,13 +50,25 @@ JobCrew is an intelligent job search application that leverages the power of Cre
    ```
 
 2. **Install dependencies**
+   
+   Option A: Install as a package (recommended)
+   ```bash
+   pip install -e .
+   ```
+   
+   Option B: Install from requirements.txt
    ```bash
    pip install -r requirements.txt
    ```
 
 3. **Set up environment variables**
    
-   Create a `.env` file in the project root (use `.env.example` as template):
+   Create a `.env` file in the project root (use `config/.env.example` as template):
+   ```bash
+   cp config/.env.example .env
+   ```
+   
+   Then edit `.env` with your API keys:
    ```env
    OPENAI_API_KEY=your_openai_api_key_here
    SERPER_API_KEY=your_serper_api_key_here
@@ -71,8 +83,20 @@ JobCrew is an intelligent job search application that leverages the power of Cre
 ### Basic Usage
 
 Run the application:
+
+Option A: If installed as package
 ```bash
-python main.py
+jobcrew
+```
+
+Option B: Using the run script
+```bash
+python run.py
+```
+
+Option C: Direct module execution
+```bash
+python -m jobcrew.main
 ```
 
 The application will prompt you for:
@@ -121,16 +145,25 @@ The application generates a comprehensive Markdown report (`jobs_report.md`) con
 
 ```
 JobCrew/
-├── agents.py              # AI agent definitions (Researcher, Analyst, Strategist)
-├── tasks.py               # Task definitions for the workflow
-├── main.py                # Main application entry point
-├── tools/
-│   └── search_tools.py    # Job search tool implementation
-├── requirements.txt       # Python dependencies
-├── .env.example          # Environment variables template
-├── README.md             # This file
-├── AGENT.md              # Detailed agent documentation
-└── LICENSE               # License information
+├── src/
+│   └── jobcrew/           # Main application package
+│       ├── __init__.py    # Package initialization
+│       ├── agents.py      # AI agent definitions (Researcher, Analyst, Strategist)
+│       ├── tasks.py       # Task definitions for the workflow
+│       ├── main.py        # Main application entry point
+│       └── tools/         # Job search tools
+│           ├── __init__.py
+│           └── search_tools.py
+├── config/
+│   └── .env.example       # Environment variables template
+├── docs/
+│   └── AGENTS.md          # Detailed agent documentation
+├── run.py                 # Application entry point script
+├── pyproject.toml         # Project configuration and dependencies
+├── requirements.txt       # Python dependencies (for pip)
+├── .gitignore             # Git ignore rules
+├── README.md              # This file
+└── LICENSE                # License information
 ```
 
 ## 🔧 Configuration
@@ -145,9 +178,11 @@ JobCrew/
 ### Customization
 
 You can customize the agents and tasks by modifying:
-- `agents.py`: Adjust agent roles, goals, and backstories
-- `tasks.py`: Modify task descriptions and expected outputs
-- `tools/search_tools.py`: Enhance search capabilities
+- `src/jobcrew/agents.py`: Adjust agent roles, goals, and backstories
+- `src/jobcrew/tasks.py`: Modify task descriptions and expected outputs
+- `src/jobcrew/tools/search_tools.py`: Enhance search capabilities
+
+For detailed information about agents, see `docs/AGENTS.md`
 
 ## 🤝 How It Works
 
