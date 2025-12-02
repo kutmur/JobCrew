@@ -44,3 +44,15 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Generated reports
+jobs_report.md
+
+# Test scripts
+test_structure.py
+
+# Old structure (deprecated)
+/agents.py
+/tasks.py
+/main.py
+/tools/
